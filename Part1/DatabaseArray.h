@@ -4,7 +4,7 @@
 #include "Database.h"
 
 struct Course {
-	std::string ID;
+	char Name[7];
 	float Credit;
 	char Grade;
 };
@@ -16,8 +16,8 @@ struct Student {
 
 class DatabaseArray : public Database {
 private:
-	std::vector<Student> _Students;
+	std::vector<Student> _students;
 
 public:
-
+	DatabaseArray();
 };
