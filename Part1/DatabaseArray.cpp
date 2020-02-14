@@ -6,15 +6,16 @@ DatabaseArray::DatabaseArray() {
 }
 
 void DatabaseArray::AddStudent(std::string name) {
-	Student student{name};
+	Array::Student student{ name };
 	_students.push_back(student);
 }
 
 bool DatabaseArray::AddCourse(const int& student_index, const char course_name[7], const float& credit, const char& grade) {
 	if (student_index >= _students.size()) {
+		std::cout << "ERROR: Student index not found\n";
 		return 0;
 	}
-	Course course{ course_name[0], credit, grade };
+	Array::Course course{ course_name[0], credit, grade };
 	for (int i = 1; i < 7; ++i) {
 		course.Name[i] = course_name[i];
 	}
@@ -25,9 +26,10 @@ bool DatabaseArray::AddCourse(const int& student_index, const char course_name[7
 
 bool DatabaseArray::GradeCourse(const int& student_index, const char course_name[7], const char& grade) {
 	if (student_index >= _students.size()) {
+		std::cout << "ERROR: Student index not found\n";
 		return 0;
 	}
-	Student& student = _students[student_index];
+	Array::Student& student = _students[student_index];
 	for (int i = 0; i < student.Courses.size(); ++i) {
 		if (student.Courses[i].Name == course_name) {
 			student.Courses[i].Grade = grade;
@@ -39,6 +41,7 @@ bool DatabaseArray::GradeCourse(const int& student_index, const char course_name
 
 bool DatabaseArray::DeleteStudent(const int& student_index) {
 	if (student_index >= _students.size()) {
+		std::cout << "ERROR: Student index not found\n";
 		return 0;
 	}
 	_students.erase(_students.begin() + student_index);
@@ -47,9 +50,10 @@ bool DatabaseArray::DeleteStudent(const int& student_index) {
 
 bool DatabaseArray::DeleteCourse(const int& student_index, const char course_name[7]) {
 	if (student_index >= _students.size()) {
+		std::cout << "ERROR: Student index not found\n";
 		return 0;
 	}
-	Student& student = _students[student_index];
+	Array::Student& student = _students[student_index];
 	for (int i = 0; i < student.Courses.size(); ++i) {
 		if (student.Courses[i].Name == course_name) {
 			student.Courses.erase(student.Courses.begin() + i);
@@ -61,9 +65,10 @@ bool DatabaseArray::DeleteCourse(const int& student_index, const char course_nam
 
 bool DatabaseArray::DisplayStudentCourses(const int& student_index) {
 	if (student_index >= _students.size()) {
+		std::cout << "ERROR: Student index not found\n";
 		return 0;
 	}
-	Student& student = _students[student_index];
+	Array::Student& student = _students[student_index];
 	std::cout << "Student: " << student.Name << "\nCourses:\n";
 	for (int i = 0; i < student.Courses.size(); ++i) {
 		std::cout << "\t" << student.Courses[i].Name << ": Grade:" << student.Courses[i].Grade << " Credit: " << student.Courses[i].Credit << "\n";

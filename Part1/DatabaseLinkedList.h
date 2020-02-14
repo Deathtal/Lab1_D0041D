@@ -1,27 +1,29 @@
 #pragma once
 
-#include <vector>
 #include "Database.h"
 
-namespace Array {
+namespace LinkedList {
 	struct Course {
 		char Name[7];
 		float Credit;
 		char Grade;
+		Course* Next = nullptr;
 	};
 
 	struct Student {
 		std::string Name;
-		std::vector<Course> Courses;
+		Student* Next;
+		Course* Courses = nullptr;
 	};
 }
 
-class DatabaseArray : public Database {
+class DatabaseLinkedList : public Database {
 private:
-	std::vector<Array::Student> _students;
+	LinkedList::Student* _head = nullptr;
+	int _size = 0;
 
 public:
-	DatabaseArray();
+	DatabaseLinkedList();
 	void AddStudent(std::string name);
 	bool AddCourse(const int& student_index, const char course_name[7], const float& credit, const char& grade);
 	bool GradeCourse(const int& student_index, const char course_name[7], const char& grade);
