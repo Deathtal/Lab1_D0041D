@@ -2,7 +2,7 @@
 
 #include <string>
 
-
+// Superclass for DatabaseArray and DatabaseLinkedList
 class Database {
 public:
 	virtual void AddStudent(std::string name) = 0;

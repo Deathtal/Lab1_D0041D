@@ -12,13 +12,13 @@ namespace Array {
 
 	struct Student {
 		std::string Name;
-		std::vector<Course> Courses;
+		std::vector<Course> Courses; // Vector of the students courses
 	};
 }
 
 class DatabaseArray : public Database {
 private:
-	std::vector<Array::Student> _students;
+	std::vector<Array::Student> _students; // Vector of the students in the database
 
 public:
 	DatabaseArray();

@@ -13,7 +13,7 @@ namespace LinkedList {
 	struct Student {
 		std::string Name;
 		Student* Next;
-		Course* Courses = nullptr;
+		Course* Courses = nullptr; // Points at the head of the Course list
 	};
 }
 

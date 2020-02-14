@@ -2,6 +2,8 @@
 
 #include <chrono>
 
+// Class for benchmarking the time between it's creasion and when it goes out of scope
+
 class InstrumentationTimer {
 private:
 	const char* _name;

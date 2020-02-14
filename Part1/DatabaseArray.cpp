@@ -1,16 +1,14 @@
 #include "DatabaseArray.h"
 #include <iostream>
 
-DatabaseArray::DatabaseArray() {
+DatabaseArray::DatabaseArray() {}
 
-}
-
-void DatabaseArray::AddStudent(std::string name) {
+void DatabaseArray::AddStudent(std::string name) { // Adds student to the database
 	Array::Student student{ name };
 	_students.push_back(student);
 }
 
-bool DatabaseArray::AddCourse(const int& student_index, const char course_name[7], const float& credit, const char& grade) {
+bool DatabaseArray::AddCourse(const int& student_index, const char course_name[7], const float& credit, const char& grade) { // Adds a course to a student
 	if (student_index >= _students.size()) {
 		std::cout << "ERROR: Student index not found\n";
 		return 0;
@@ -24,7 +22,7 @@ bool DatabaseArray::AddCourse(const int& student_index, const char course_name[7
 };
 
 
-bool DatabaseArray::GradeCourse(const int& student_index, const char course_name[7], const char& grade) {
+bool DatabaseArray::GradeCourse(const int& student_index, const char course_name[7], const char& grade) { // Modifies the grade of a course of a student
 	if (student_index >= _students.size()) {
 		std::cout << "ERROR: Student index not found\n";
 		return 0;
@@ -39,7 +37,7 @@ bool DatabaseArray::GradeCourse(const int& student_index, const char course_name
 	return 0;
 }
 
-bool DatabaseArray::DeleteStudent(const int& student_index) {
+bool DatabaseArray::DeleteStudent(const int& student_index) { // Deletes a student from the database
 	if (student_index >= _students.size()) {
 		std::cout << "ERROR: Student index not found\n";
 		return 0;
@@ -48,7 +46,7 @@ bool DatabaseArray::DeleteStudent(const int& student_index) {
 	return 1;
 }
 
-bool DatabaseArray::DeleteCourse(const int& student_index, const char course_name[7]) {
+bool DatabaseArray::DeleteCourse(const int& student_index, const char course_name[7]) { // Deletes a course of a student
 	if (student_index >= _students.size()) {
 		std::cout << "ERROR: Student index not found\n";
 		return 0;
@@ -63,7 +61,7 @@ bool DatabaseArray::DeleteCourse(const int& student_index, const char course_nam
 	return 0;
 }
 
-bool DatabaseArray::DisplayStudentCourses(const int& student_index) {
+bool DatabaseArray::DisplayStudentCourses(const int& student_index) { // Display all courses of a student aswell as thier grade and credit
 	if (student_index >= _students.size()) {
 		std::cout << "ERROR: Student index not found\n";
 		return 0;
@@ -77,12 +75,12 @@ bool DatabaseArray::DisplayStudentCourses(const int& student_index) {
 	return 1;
 }
 
-void DatabaseArray::DisplayStudents() {
+void DatabaseArray::DisplayStudents() { // Displays the name and index of all the students in the database
 	for (int i = 0; i < _students.size(); ++i) {
 		std::cout << i << ". " << _students[i].Name << "\n";
 	}
 }
 
-const int DatabaseArray::Size() const {
+const int DatabaseArray::Size() const { // Returns the size of the vector
 	return _students.size();
 }
