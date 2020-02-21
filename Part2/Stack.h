@@ -9,6 +9,7 @@ protected:
 	size_t _bot = 1;
 	friend class Queue;
 public:
+	Stack();
 	Stack(size_t s);
 	Stack(Queue queue);
 	void Push(char character);

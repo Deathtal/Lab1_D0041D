@@ -2,7 +2,7 @@
 
 #include <chrono>
 
-// Class for benchmarking the time between it's creasion and when it goes out of scope
+// Class for benchmarking the time between it's creation and when it goes out of scope
 
 class InstrumentationTimer {
 private:

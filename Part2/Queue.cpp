@@ -1,5 +1,9 @@
 #include "Queue.h"
 
+Queue::Queue() {
+	_word = new char[64];
+}
+
 Queue::Queue(size_t s) {
 	_word = new char[s];
 }

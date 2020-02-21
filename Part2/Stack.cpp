@@ -1,5 +1,9 @@
 #include "Stack.h"
 
+Stack::Stack() {
+	_word = new char[64];
+}
+
 Stack::Stack(size_t s) {
 	_word = new char[s];
 }
