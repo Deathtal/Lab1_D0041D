@@ -16,4 +16,5 @@ public:
 	const char& Peek() const;
 	bool Pop();
 	void operator=(Queue queue);
+	const size_t Size() const;
 };

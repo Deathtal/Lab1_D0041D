@@ -36,3 +36,7 @@ void Stack::operator=(Queue queue) {
 	_top = queue._top;
 	_bot = queue._bot;
 }
+
+const size_t Stack::Size() const {
+	return _top - _bot + 1;
+}

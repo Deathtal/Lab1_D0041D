@@ -35,14 +35,7 @@ void fillStack(Stack& stack, size_t amount) { // Fills a Stack with an amount of
 
 bool isPalindromeStack(Stack stack) { // Function that test if a Stack contains a palindrome only using Stack
 	InstrumentationTimer timer("Stack"); // Timer for the total time this function was running
-	Stack sacrificialStackForFindingOutTheSizeOfTheWordRIP = stack; // Using names that explain what an object is for makes the code more understandable and easier to read
-	if (!sacrificialStackForFindingOutTheSizeOfTheWordRIP.Pop()) {
-		return 1;
-	}
-	size_t wordSize = 2; // Instead of using a do-while loop and having this at 1 I just put it to 2 and used a normal while loop instead
-	while (sacrificialStackForFindingOutTheSizeOfTheWordRIP.Pop()) {
-		++wordSize;
-	}
+	size_t wordSize = stack.Size();
 	Stack firstHalf; // This will contain the first half of the word in reverse order
 	for (size_t i = 0; i < wordSize / 2; ++i) {
 		firstHalf.Push(stack.Peek());
@@ -64,7 +57,8 @@ bool isPalindromeStack(Stack stack) { // Function that test if a Stack contains 
 bool isPalindromeQueueStack(Stack stack) { // Function that test if a Stack contains a palindrome using both Stack and Queue
 	InstrumentationTimer timer("Queue + Stack"); // Timer for the total time this function was running
 	Queue queue = stack; // Does not give error for Stack = Queue, even though there's no difference for some reason VS complains about Queue = Stack
-	while (1) {
+	size_t size = stack.Size();
+	for (size_t i = 0; i < size / 2; ++i) {
 		if (stack.Peek() != queue.Peek()) {
 			return 0;
 		}
@@ -72,6 +66,7 @@ bool isPalindromeQueueStack(Stack stack) { // Function that test if a Stack cont
 			return 1;
 		}
 	}
+	return 1;
 }
 
 void benchmark(int seed, int32_t amount_of_times, size_t word_size) { // Benchmarks the functions
@@ -90,6 +85,6 @@ void benchmark(int seed, int32_t amount_of_times, size_t word_size) { // Benchma
 }
 
 int main() {
-	benchmark(3, 1000000, 64);
+	benchmark(3, 2000000, 64);
 	Instrumentor::Get().Print();
 }

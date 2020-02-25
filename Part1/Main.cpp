@@ -4,7 +4,7 @@
 #include "DatabaseLinkedList.h"
 #include <cstdlib>
 
-#define AMOUNT_OF_ACTIONS 10000 // Macro for changing the amount of times the method that are being benchmarked will be repeated
+#define AMOUNT_OF_ACTIONS 100000 // Macro for changing the amount of times the method that are being benchmarked will be repeated
 
 int main() {
 	// Was originally going to have a function that calls methods of a database and times them
